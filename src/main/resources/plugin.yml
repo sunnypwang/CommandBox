@@ -28,3 +28,9 @@ commands:
   wiki:
     description: Return the Minecraft wiki link of a query (no check for valid page yet). e.g. /wiki Dirt returns https://minecraft.gamepedia.com/Dirt
     usage: /<command> [query]
+  afk:
+    description: mark yourself as afk
+    usage: /<command>
+  deafk:
+    description: mark yourself as no longer afk
+    usage: /<command>
