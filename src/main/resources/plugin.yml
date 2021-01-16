@@ -1,7 +1,7 @@
 name: CommandBox
 version: ${project.version}
 main: sunnypwang.commandbox.CommandBox
-api-version: 1.13
+#api-version: 1.16
 commands:
   ping:
     description: Ping test
