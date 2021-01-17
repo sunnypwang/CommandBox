@@ -22,6 +22,7 @@ commands:
   here:
     description: Show your current coordinate
     usage: /<command>
+    aliases: [where]
   dist:
     description: Calculate distance between you and target, you and coordinates, or two coordinates
     usage: /<command> <target> or /<command> <x> <y> <z> or /<command> <x1> <y1> <z1> <x2> <y2> <z2>
