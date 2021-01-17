@@ -31,8 +31,10 @@ public class Wiki implements CommandExecutor {
             try {
                 doc = Jsoup.connect(url_str).get();
             } catch (IOException e) {
-                System.out.println("404 Not Found");
+//                System.out.println("404 Not Found");
+                sender.sendMessage( ChatColor.RED + "404 Not Found");
                 return true;
+
             }
 
             //get general description
