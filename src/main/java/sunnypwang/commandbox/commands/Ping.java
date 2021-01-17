@@ -10,11 +10,12 @@ public class Ping implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player){
-            sender.sendMessage(ChatColor.YELLOW + "Pong!");
-        } else {
-            System.out.println("Must be a player");
-        }
+//        if (sender instanceof Player){
+//            sender.sendMessage(ChatColor.YELLOW + "Pong!");
+//        } else {
+//            System.out.println("Must be a player");
+//        }
+        sender.sendMessage(ChatColor.YELLOW + "Pong!");
         return true;
     }
 }

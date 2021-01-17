@@ -10,12 +10,13 @@ public class Pong implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player){
-            sender.sendMessage(ChatColor.YELLOW + "I heard pppoison likes cute Asian boys");
-
-        } else {
-            System.out.println("Must be a player");
-        }
+//        if (sender instanceof Player){
+//            sender.sendMessage(ChatColor.YELLOW + "I heard pppoison likes cute Asian boys");
+//
+//        } else {
+//            System.out.println("Must be a player");
+//        }
+        sender.sendMessage(ChatColor.YELLOW + "I heard pppoison likes cute Asian boys");
         return true;
     }
 }
