@@ -26,7 +26,7 @@ public class Dist implements CommandExecutor {
                 }
 
             } else {
-                System.out.println("Must be a player");
+                sender.sendMessage("Must be a player");
             }
         } else if (args.length == 3){   //distance between this player and destination coordinates
             if (sender instanceof Player) {
@@ -34,7 +34,7 @@ public class Dist implements CommandExecutor {
                 String distance = Util.euclideanDistance(((Player) sender).getLocation(), loc);
                 sender.sendMessage("Distance between you and " + Util.formatLocation(loc) + ": " + ChatColor.GREEN + distance);
             } else {
-                System.out.println("Must be a player");
+                sender.sendMessage("Must be a player");
             }
         } else if (args.length == 6) {  //distance between two coordinates
             if (sender instanceof Player) {
@@ -43,7 +43,7 @@ public class Dist implements CommandExecutor {
                 String distance = Util.euclideanDistance(loc1, loc2);
                 sender.sendMessage("Distance between " + Util.formatLocation(loc1) + " and " + Util.formatLocation(loc2) + ": " + ChatColor.GREEN + distance);
             } else {
-                System.out.println("Must be a player");
+                sender.sendMessage("Must be a player");
             }
         } else {
             sender.sendMessage("Unknown Usage. See /help dist");

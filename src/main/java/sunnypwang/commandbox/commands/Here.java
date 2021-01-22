@@ -18,7 +18,7 @@ public class Here implements CommandExecutor {
         if (sender instanceof Player){
             Bukkit.broadcastMessage(ChatColor.GREEN +  sender.getName() + " is at " + Util.formatLocation(((Player) sender).getLocation()));
         } else {
-            System.out.println("Must be a player");
+            sender.sendMessage("Must be a player");
         }
         return true;
 
