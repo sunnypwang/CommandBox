@@ -74,13 +74,13 @@ public class Wiki implements CommandExecutor {
             }
 
             //combine message and send
-            String msg = String.join("\n", url_str, generalDesc, desc);
+            String msg = String.join("\n", ChatColor.BLUE + url_str, generalDesc, desc);
             sender.sendMessage(msg);
 //            System.out.println(msg);
 
 
         } else { //if no arguments, simply print home URL
-            sender.sendMessage(url_str);
+            sender.sendMessage(ChatColor.BLUE + url_str);
 //            System.out.println(url_str);
         }
         return true;

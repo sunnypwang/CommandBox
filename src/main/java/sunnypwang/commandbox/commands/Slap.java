@@ -2,6 +2,7 @@ package sunnypwang.commandbox.commands;
 
 import org.apache.commons.lang.math.RandomUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -23,13 +24,13 @@ public class Slap implements CommandExecutor {
 
             if (target instanceof Player){
                 target.setVelocity(vel);
-                target.sendMessage(sender.getName() + " slapped you!");
+                target.sendMessage(ChatColor.YELLOW + sender.getName() + " slapped you!");
 
                 if (sender instanceof Player) {
-                    sender.sendMessage("You slapped " + target.getDisplayName() + "!");
+                    sender.sendMessage(ChatColor.YELLOW + "You slapped " + target.getDisplayName() + "!");
                 }
             } else {
-                sender.sendMessage("The target does not exist!");
+                sender.sendMessage(ChatColor.RED + "The target does not exist!");
             }
         }
 
@@ -38,9 +39,9 @@ public class Slap implements CommandExecutor {
 
             if (sender instanceof Player) {
                 ((Player) sender).setVelocity(vel);
-                sender.sendMessage("You slapped yourself!");
+                sender.sendMessage(ChatColor.YELLOW + "You slapped yourself!");
             } else {
-                System.out.println("Must be a player");
+                sender.sendMessage(ChatColor.RED + "Must be a player");
             }
         }
 
