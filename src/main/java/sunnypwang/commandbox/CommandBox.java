@@ -4,6 +4,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import sunnypwang.commandbox.commands.*;
 import sunnypwang.commandbox.events.onNoLongerAFK;
+import sunnypwang.commandbox.util.FileUtil;
 
 public final class CommandBox extends JavaPlugin implements Listener {
 
@@ -21,8 +22,13 @@ public final class CommandBox extends JavaPlugin implements Listener {
         this.getCommand("wiki").setExecutor(new Wiki());
         this.getCommand("afk").setExecutor(new AFK());
         this.getCommand("deafk").setExecutor(new Deafk());
+        this.getCommand("deafk").setExecutor(new Deafk());
+        this.getCommand("home").setExecutor(new Home());
 
         getServer().getPluginManager().registerEvents(new onNoLongerAFK(), this);
+
+        FileUtil.initialize();
+
     }
 
     @Override

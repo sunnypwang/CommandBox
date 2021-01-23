@@ -11,7 +11,7 @@ public class FileUtil {
 
     public static final String rootDir = "plugins/CommandBox/";
 
-    public FileUtil() {
+    public static void initialize() {
         new File(rootDir).mkdirs(); //Make a directory if not exist
     }
 
