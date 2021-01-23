@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
@@ -12,14 +13,19 @@ public class FileUtil {
     public static final String rootDir = "plugins/CommandBox/";
 
     public static void initialize() {
-        new File(rootDir).mkdirs(); //Make a directory if not exist
+        try {
+            Files.createDirectories(Paths.get(rootDir)); //Make a directory if not exist
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public static File loadFIle(String filename){
-        File file = new File(rootDir + filename);
+    public static File loadFile(String filename){
+        String filepath = Paths.get(rootDir, filename).toString();
+        File file = new File(filepath);
         try {
             if (file.createNewFile()) { //create new file, do nothing if exists
-                System.out.println("File created: " + file.getName());
+                System.out.println("File created: " + file.getPath());
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -27,19 +33,35 @@ public class FileUtil {
         return file;
     }
 
-    public static List<String> readFile(String filename) {
+    public static File loadFile(String subDir, String filename){
+        Path filepath = Paths.get(rootDir, subDir, filename);
         try {
-            return Files.readAllLines(Paths.get(rootDir + filename));
+            if (Files.notExists(filepath)){
+                Files.createDirectories(Paths.get(filepath.getParent().toString()));
+                Files.createFile(filepath);
+            }
+            File file = new File(filepath.toString());
+            return file;
         } catch (IOException e) {
-            System.out.println("Cannot open " + rootDir + filename);
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static List<String> readFile(String subDir, String filename) {
+        File file = loadFile(subDir, filename);
+        try {
+            return Files.readAllLines(Paths.get(file.getPath()));
+        } catch (IOException e) {
+            System.out.println("Cannot open " + file.getPath());
         }
 
         return null;
     }
 
-    public static void writeLine(String filename, String line) {
+    public static void writeLine(String subDir, String filename, String line) {
         //Open a file
-        File file = new File(rootDir + filename);
+        File file = loadFile(subDir, filename);
         try {
             FileWriter writer = new FileWriter(file, true);
             writer.write(line + "\n");
