@@ -19,8 +19,6 @@ public class Note implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-
-
         if (args.length > 0) {
 
             //Parse %loc%
@@ -32,7 +30,7 @@ public class Note implements CommandExecutor {
             }
 
             String text = sender.getName() + ":" + String.join(" ", args);
-            FileUtil.writeLine("note.txt", text);
+            FileUtil.writeLine("notes", "note.txt", text);
 
             sender.sendMessage(ChatColor.GREEN + "Noted!");
         } else {

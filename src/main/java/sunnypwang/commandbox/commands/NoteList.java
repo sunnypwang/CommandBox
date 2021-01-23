@@ -17,7 +17,7 @@ public class NoteList implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        List<String> notes = FileUtil.readFile("note.txt");
+        List<String> notes = FileUtil.readFile("notes", "note.txt");
         if (notes != null){
             int idx = 1;
             sender.sendMessage("[ NOTES ]");
@@ -26,6 +26,8 @@ public class NoteList implements CommandExecutor {
                 sender.sendMessage("[" + ChatColor.AQUA + idx + ChatColor.RESET +  "] " + parts[1]);
                 idx += 1 ;
             }
+        } else {
+            sender.sendMessage("Empty notes. Create one with /note");
         }
 
 
