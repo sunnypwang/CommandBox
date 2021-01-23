@@ -6,6 +6,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import sunnypwang.commandbox.util.FileUtil;
 import sunnypwang.commandbox.util.Util;
 
 import java.io.File;
@@ -18,7 +19,7 @@ public class Note implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        String dir = "plugins/CommandBox/";
+
 
         if (args.length > 0) {
 
@@ -30,25 +31,10 @@ public class Note implements CommandExecutor {
                 }
             }
 
+            String text = sender.getName() + ":" + String.join(" ", args);
+            FileUtil.writeLine("note.txt", text);
 
-            //Make a directory if not exist
-            new File(dir).mkdirs();
-
-            //Open a file
-            File note = new File(dir + "note.txt");
-            FileWriter writer;
-
-            try {
-                writer = new FileWriter(note, true);
-                String text = sender.getName() + ":";
-                text += String.join(" ", args) + "\r\n";
-                writer.write(text);
-                writer.close();
-
-                sender.sendMessage(ChatColor.GREEN + "Noted!");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            sender.sendMessage(ChatColor.GREEN + "Noted!");
         } else {
             sender.sendMessage(ChatColor.RED +  "No message. Please use /note <message>");
         }
