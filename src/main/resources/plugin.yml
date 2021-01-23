@@ -35,3 +35,9 @@ commands:
   deafk:
     description: mark yourself as no longer afk
     usage: /<command>
+  home:
+    description: return to home
+    usage: /<command>
+  sethome:
+    description: set home
+    usage: /<command>
