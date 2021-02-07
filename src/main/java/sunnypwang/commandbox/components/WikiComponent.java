@@ -65,7 +65,7 @@ public class WikiComponent implements CommandExecutor {
                 Elements children = elementUsageParent.parent().children();
                 Element elementUsageParagraph = children.get(idx + 1);
                 //search for next paragraph tag
-                while (elementUsageParagraph.tagName() != "p" && idx < children.size() - 1) {
+                while (!elementUsageParagraph.tagName().equals("p") && idx < children.size() - 1) {
                     idx++;
                     elementUsageParagraph = children.get(idx);
                 }
