@@ -40,8 +40,7 @@ public class FileUtil {
                 Files.createDirectories(Paths.get(filepath.getParent().toString()));
                 Files.createFile(filepath);
             }
-            File file = new File(filepath.toString());
-            return file;
+            return new File(filepath.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }

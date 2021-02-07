@@ -20,20 +20,17 @@ commands:
     usage: /<command>
     aliases: [notelist]
   here:
-    description: Show your current coordinate
+    description: Broadcast your current coordinate
     usage: /<command>
     aliases: [where]
   dist:
     description: Calculate distance between you and target, you and coordinates, or two coordinates
     usage: /<command> <target> or /<command> <x> <y> <z> or /<command> <x1> <y1> <z1> <x2> <y2> <z2>
   wiki:
-    description: Return the Minecraft wiki link of a query (no check for valid page yet). e.g. /wiki Dirt returns https://minecraft.gamepedia.com/Dirt
+    description: Return the Minecraft wiki link of a query
     usage: /<command> [query]
   afk:
     description: mark yourself as afk
-    usage: /<command>
-  deafk:
-    description: mark yourself as no longer afk
     usage: /<command>
   home:
     description: return to home

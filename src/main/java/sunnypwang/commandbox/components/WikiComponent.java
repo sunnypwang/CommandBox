@@ -1,24 +1,25 @@
-package sunnypwang.commandbox.commands;
+package sunnypwang.commandbox.components;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import sunnypwang.commandbox.CommandBox;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.stream.Collectors;
 
-public class Wiki implements CommandExecutor {
+public class WikiComponent implements CommandExecutor {
+
+    private final CommandBox instance;
+
+    public WikiComponent(CommandBox instance) {
+        this.instance = instance;
+        this.instance.getCommand("wiki").setExecutor(this);
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -74,13 +75,13 @@ public class Wiki implements CommandExecutor {
             }
 
             //combine message and send
-            String msg = String.join("\n", ChatColor.BLUE + url_str, generalDesc, desc);
+            String msg = String.join("\n", ChatColor.AQUA + url_str + ChatColor.RESET, generalDesc, desc);
             sender.sendMessage(msg);
 //            System.out.println(msg);
 
 
         } else { //if no arguments, simply print home URL
-            sender.sendMessage(ChatColor.BLUE + url_str);
+            sender.sendMessage(ChatColor.AQUA + url_str);
 //            System.out.println(url_str);
         }
         return true;
